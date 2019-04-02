@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.speed.cat.dao.ShopMapMapper">
+  <resultMap id="BaseResultMap" type="com.speed.cat.model.ShopMap">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="shopId" jdbcType="BIGINT" property="shopid" />
+    <result column="shopCode" jdbcType="VARCHAR" property="shopcode" />
+    <result column="areaId" jdbcType="BIGINT" property="areaid" />
+    <result column="shopName" jdbcType="VARCHAR" property="shopname" />
+    <result column="shopAddress" jdbcType="VARCHAR" property="shopaddress" />
+    <result column="equipCount" jdbcType="INTEGER" property="equipcount" />
+    <result column="shopCoordinate" jdbcType="VARCHAR" property="shopcoordinate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+
+</mapper>

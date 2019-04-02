@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ydb.auxiliary.service.ydbauxiliaryservice.dao.cluster.OrderLibraryMapper">
+  <resultMap id="BaseResultMap" type="ydb.auxiliary.service.ydbauxiliaryservice.model.OrderLibrary">
+    <result column="ID" jdbcType="BIGINT" property="id" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+    <result column="M_OPENID" jdbcType="VARCHAR" property="mOpenid" />
+    <result column="M_TYPE" jdbcType="INTEGER" property="mType" />
+    <result column="SEX" jdbcType="INTEGER" property="sex" />
+    <result column="REGISTTIME" jdbcType="TIMESTAMP" property="registtime" />
+    <result column="ORDERTIME" jdbcType="TIMESTAMP" property="ordertime" />
+    <result column="EQUIP_CODE" jdbcType="VARCHAR" property="equipCode" />
+    <result column="ORDER_STATUS" jdbcType="INTEGER" property="orderStatus" />
+    <result column="PAY_STATUS" jdbcType="INTEGER" property="payStatus" />
+    <result column="PAY_TYPE" jdbcType="INTEGER" property="payType" />
+    <result column="PAY_CODE" jdbcType="VARCHAR" property="payCode" />
+    <result column="POWER_BI" jdbcType="VARCHAR" property="powerBi" />
+    <result column="BW_SHOP" jdbcType="VARCHAR" property="bwShop" />
+    <result column="BK_SHOP" jdbcType="VARCHAR" property="bkShop" />
+    <result column="BK_TIME" jdbcType="TIMESTAMP" property="bkTime" />
+    <result column="USE_MINUTE" jdbcType="INTEGER" property="useMinute" />
+    <result column="BILL" jdbcType="DOUBLE" property="bill" />
+    <result column="UNIT_PRICE" jdbcType="DOUBLE" property="unitPrice" />
+    <result column="FREE_USETIME" jdbcType="INTEGER" property="freeUsetime" />
+    <result column="HIGH_COST" jdbcType="DOUBLE" property="highCost" />
+    <result column="PLAT_OID" jdbcType="VARCHAR" property="platOid" />
+    <result column="PLAT_NAME" jdbcType="VARCHAR" property="platName" />
+    <result column="PLAT_EXTRACT" jdbcType="INTEGER" property="platExtract" />
+    <result column="PROVINCE_OID" jdbcType="VARCHAR" property="provinceOid" />
+    <result column="PROVINCE_NAME" jdbcType="VARCHAR" property="provinceName" />
+    <result column="PROVINCE_EXTACT" jdbcType="INTEGER" property="provinceExtact" />
+    <result column="CITY_OID" jdbcType="VARCHAR" property="cityOid" />
+    <result column="CITY_NAME" jdbcType="VARCHAR" property="cityName" />
+    <result column="CITY_EXTACT" jdbcType="INTEGER" property="cityExtact" />
+    <result column="AREA_OID" jdbcType="VARCHAR" property="areaOid" />
+    <result column="AREA_NAME" jdbcType="VARCHAR" property="areaName" />
+    <result column="AREA_EXTACT" jdbcType="INTEGER" property="areaExtact" />
+    <result column="SALES_OID" jdbcType="VARCHAR" property="salesOid" />
+    <result column="SALES_NAME" jdbcType="VARCHAR" property="salesName" />
+    <result column="SALES_EXTACT" jdbcType="INTEGER" property="salesExtact" />
+    <result column="SHOP_OID" jdbcType="VARCHAR" property="shopOid" />
+    <result column="SHOP_NAME" jdbcType="VARCHAR" property="shopName" />
+    <result column="SHOP_EXTACT" jdbcType="INTEGER" property="shopExtact" />
+    <result column="SHOP_PROFIT_MONEY" jdbcType="DOUBLE" property="shopProfitMoney" />
+    <result column="DI_TIME" jdbcType="TIMESTAMP" property="diTime" />
+    <result column="BW_SID" jdbcType="BIGINT" property="bwSid" />
+    <result column="BW_SCODE" jdbcType="VARCHAR" property="bwScode" />
+    <result column="BK_SID" jdbcType="BIGINT" property="bkSid" />
+    <result column="BK_SCODE" jdbcType="VARCHAR" property="bkScode" />
+    <result column="PLAT_MONEY" jdbcType="DOUBLE" property="platMoney" />
+    <result column="PROVINCE_MONEY" jdbcType="DOUBLE" property="provinceMoney" />
+    <result column="CITY_MONEY" jdbcType="DOUBLE" property="cityMoney" />
+    <result column="AREA_MONEY" jdbcType="DOUBLE" property="areaMoney" />
+    <result column="SALES_MONEY" jdbcType="DOUBLE" property="salesMoney" />
+    <result column="SHOP_MONEY" jdbcType="DOUBLE" property="shopMoney" />
+    <result column="NICK_NAME" jdbcType="VARCHAR" property="nickName" />
+    <result column="HEAD_IMG" jdbcType="VARCHAR" property="headImg" />
+    <result column="EQUIP_TYPE_ID" jdbcType="BIGINT" property="equipTypeId" />
+    <result column="EQUIP_TYPE_CODE" jdbcType="VARCHAR" property="equipTypeCode" />
+    <result column="EQUIP_TYPE_NAME" jdbcType="VARCHAR" property="equipTypeName" />
+    <result column="EQUIP_TYPE_CARDNUM" jdbcType="INTEGER" property="equipTypeCardnum" />
+    <result column="EQUIP_TYPE_VERSION" jdbcType="INTEGER" property="equipTypeVersion" />
+    <result column="UPDATETIME" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="M_ID" jdbcType="BIGINT" property="mId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, CODE, M_OPENID, M_TYPE, SEX, REGISTTIME, ORDERTIME, EQUIP_CODE, ORDER_STATUS, 
+    PAY_STATUS, PAY_TYPE, PAY_CODE, POWER_BI, BW_SHOP, BK_SHOP, BK_TIME, USE_MINUTE, 
+    BILL, UNIT_PRICE, FREE_USETIME, HIGH_COST, PLAT_OID, PLAT_NAME, PLAT_EXTRACT, PROVINCE_OID, 
+    PROVINCE_NAME, PROVINCE_EXTACT, CITY_OID, CITY_NAME, CITY_EXTACT, AREA_OID, AREA_NAME, 
+    AREA_EXTACT, SALES_OID, SALES_NAME, SALES_EXTACT, SHOP_OID, SHOP_NAME, SHOP_EXTACT, 
+    SHOP_PROFIT_MONEY, DI_TIME, BW_SID, BW_SCODE, BK_SID, BK_SCODE, PLAT_MONEY, PROVINCE_MONEY, 
+    CITY_MONEY, AREA_MONEY, SALES_MONEY, SHOP_MONEY, NICK_NAME, HEAD_IMG, EQUIP_TYPE_ID, 
+    EQUIP_TYPE_CODE, EQUIP_TYPE_NAME, EQUIP_TYPE_CARDNUM, EQUIP_TYPE_VERSION, UPDATETIME, 
+    M_ID
+  </sql>
+  <select id="selectByExample" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.OrderLibraryExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_library
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.OrderLibraryExample">
+    delete from order_library
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.OrderLibrary">
+    insert into order_library (ID, CODE, M_OPENID, 
+      M_TYPE, SEX, REGISTTIME, 
+      ORDERTIME, EQUIP_CODE, ORDER_STATUS, 
+      PAY_STATUS, PAY_TYPE, PAY_CODE, 
+      POWER_BI, BW_SHOP, BK_SHOP, 
+      BK_TIME, USE_MINUTE, BILL, 
+      UNIT_PRICE, FREE_USETIME, HIGH_COST, 
+      PLAT_OID, PLAT_NAME, PLAT_EXTRACT, 
+      PROVINCE_OID, PROVINCE_NAME, PROVINCE_EXTACT, 
+      CITY_OID, CITY_NAME, CITY_EXTACT, 
+      AREA_OID, AREA_NAME, AREA_EXTACT, 
+      SALES_OID, SALES_NAME, SALES_EXTACT, 
+      SHOP_OID, SHOP_NAME, SHOP_EXTACT, 
+      SHOP_PROFIT_MONEY, DI_TIME, BW_SID, 
+      BW_SCODE, BK_SID, BK_SCODE, 
+      PLAT_MONEY, PROVINCE_MONEY, CITY_MONEY, 
+      AREA_MONEY, SALES_MONEY, SHOP_MONEY, 
+      NICK_NAME, HEAD_IMG, EQUIP_TYPE_ID, 
+      EQUIP_TYPE_CODE, EQUIP_TYPE_NAME, EQUIP_TYPE_CARDNUM, 
+      EQUIP_TYPE_VERSION, UPDATETIME, M_ID
+      )
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{mOpenid,jdbcType=VARCHAR}, 
+      #{mType,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER}, #{registtime,jdbcType=TIMESTAMP}, 
+      #{ordertime,jdbcType=TIMESTAMP}, #{equipCode,jdbcType=VARCHAR}, #{orderStatus,jdbcType=INTEGER}, 
+      #{payStatus,jdbcType=INTEGER}, #{payType,jdbcType=INTEGER}, #{payCode,jdbcType=VARCHAR}, 
+      #{powerBi,jdbcType=VARCHAR}, #{bwShop,jdbcType=VARCHAR}, #{bkShop,jdbcType=VARCHAR}, 
+      #{bkTime,jdbcType=TIMESTAMP}, #{useMinute,jdbcType=INTEGER}, #{bill,jdbcType=DOUBLE}, 
+      #{unitPrice,jdbcType=DOUBLE}, #{freeUsetime,jdbcType=INTEGER}, #{highCost,jdbcType=DOUBLE}, 
+      #{platOid,jdbcType=VARCHAR}, #{platName,jdbcType=VARCHAR}, #{platExtract,jdbcType=INTEGER}, 
+      #{provinceOid,jdbcType=VARCHAR}, #{provinceName,jdbcType=VARCHAR}, #{provinceExtact,jdbcType=INTEGER}, 
+      #{cityOid,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR}, #{cityExtact,jdbcType=INTEGER}, 
+      #{areaOid,jdbcType=VARCHAR}, #{areaName,jdbcType=VARCHAR}, #{areaExtact,jdbcType=INTEGER}, 
+      #{salesOid,jdbcType=VARCHAR}, #{salesName,jdbcType=VARCHAR}, #{salesExtact,jdbcType=INTEGER}, 
+      #{shopOid,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, #{shopExtact,jdbcType=INTEGER}, 
+      #{shopProfitMoney,jdbcType=DOUBLE}, #{diTime,jdbcType=TIMESTAMP}, #{bwSid,jdbcType=BIGINT}, 
+      #{bwScode,jdbcType=VARCHAR}, #{bkSid,jdbcType=BIGINT}, #{bkScode,jdbcType=VARCHAR}, 
+      #{platMoney,jdbcType=DOUBLE}, #{provinceMoney,jdbcType=DOUBLE}, #{cityMoney,jdbcType=DOUBLE}, 
+      #{areaMoney,jdbcType=DOUBLE}, #{salesMoney,jdbcType=DOUBLE}, #{shopMoney,jdbcType=DOUBLE}, 
+      #{nickName,jdbcType=VARCHAR}, #{headImg,jdbcType=VARCHAR}, #{equipTypeId,jdbcType=BIGINT}, 
+      #{equipTypeCode,jdbcType=VARCHAR}, #{equipTypeName,jdbcType=VARCHAR}, #{equipTypeCardnum,jdbcType=INTEGER}, 
+      #{equipTypeVersion,jdbcType=INTEGER}, #{updatetime,jdbcType=TIMESTAMP}, #{mId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.OrderLibrary">
+    insert into order_library
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+      <if test="mOpenid != null">
+        M_OPENID,
+      </if>
+      <if test="mType != null">
+        M_TYPE,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="registtime != null">
+        REGISTTIME,
+      </if>
+      <if test="ordertime != null">
+        ORDERTIME,
+      </if>
+      <if test="equipCode != null">
+        EQUIP_CODE,
+      </if>
+      <if test="orderStatus != null">
+        ORDER_STATUS,
+      </if>
+      <if test="payStatus != null">
+        PAY_STATUS,
+      </if>
+      <if test="payType != null">
+        PAY_TYPE,
+      </if>
+      <if test="payCode != null">
+        PAY_CODE,
+      </if>
+      <if test="powerBi != null">
+        POWER_BI,
+      </if>
+      <if test="bwShop != null">
+        BW_SHOP,
+      </if>
+      <if test="bkShop != null">
+        BK_SHOP,
+      </if>
+      <if test="bkTime != null">
+        BK_TIME,
+      </if>
+      <if test="useMinute != null">
+        USE_MINUTE,
+      </if>
+      <if test="bill != null">
+        BILL,
+      </if>
+      <if test="unitPrice != null">
+        UNIT_PRICE,
+      </if>
+      <if test="freeUsetime != null">
+        FREE_USETIME,
+      </if>
+      <if test="highCost != null">
+        HIGH_COST,
+      </if>
+      <if test="platOid != null">
+        PLAT_OID,
+      </if>
+      <if test="platName != null">
+        PLAT_NAME,
+      </if>
+      <if test="platExtract != null">
+        PLAT_EXTRACT,
+      </if>
+      <if test="provinceOid != null">
+        PROVINCE_OID,
+      </if>
+      <if test="provinceName != null">
+        PROVINCE_NAME,
+      </if>
+      <if test="provinceExtact != null">
+        PROVINCE_EXTACT,
+      </if>
+      <if test="cityOid != null">
+        CITY_OID,
+      </if>
+      <if test="cityName != null">
+        CITY_NAME,
+      </if>
+      <if test="cityExtact != null">
+        CITY_EXTACT,
+      </if>
+      <if test="areaOid != null">
+        AREA_OID,
+      </if>
+      <if test="areaName != null">
+        AREA_NAME,
+      </if>
+      <if test="areaExtact != null">
+        AREA_EXTACT,
+      </if>
+      <if test="salesOid != null">
+        SALES_OID,
+      </if>
+      <if test="salesName != null">
+        SALES_NAME,
+      </if>
+      <if test="salesExtact != null">
+        SALES_EXTACT,
+      </if>
+      <if test="shopOid != null">
+        SHOP_OID,
+      </if>
+      <if test="shopName != null">
+        SHOP_NAME,
+      </if>
+      <if test="shopExtact != null">
+        SHOP_EXTACT,
+      </if>
+      <if test="shopProfitMoney != null">
+        SHOP_PROFIT_MONEY,
+      </if>
+      <if test="diTime != null">
+        DI_TIME,
+      </if>
+      <if test="bwSid != null">
+        BW_SID,
+      </if>
+      <if test="bwScode != null">
+        BW_SCODE,
+      </if>
+      <if test="bkSid != null">
+        BK_SID,
+      </if>
+      <if test="bkScode != null">
+        BK_SCODE,
+      </if>
+      <if test="platMoney != null">
+        PLAT_MONEY,
+      </if>
+      <if test="provinceMoney != null">
+        PROVINCE_MONEY,
+      </if>
+      <if test="cityMoney != null">
+        CITY_MONEY,
+      </if>
+      <if test="areaMoney != null">
+        AREA_MONEY,
+      </if>
+      <if test="salesMoney != null">
+        SALES_MONEY,
+      </if>
+      <if test="shopMoney != null">
+        SHOP_MONEY,
+      </if>
+      <if test="nickName != null">
+        NICK_NAME,
+      </if>
+      <if test="headImg != null">
+        HEAD_IMG,
+      </if>
+      <if test="equipTypeId != null">
+        EQUIP_TYPE_ID,
+      </if>
+      <if test="equipTypeCode != null">
+        EQUIP_TYPE_CODE,
+      </if>
+      <if test="equipTypeName != null">
+        EQUIP_TYPE_NAME,
+      </if>
+      <if test="equipTypeCardnum != null">
+        EQUIP_TYPE_CARDNUM,
+      </if>
+      <if test="equipTypeVersion != null">
+        EQUIP_TYPE_VERSION,
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME,
+      </if>
+      <if test="mId != null">
+        M_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="mOpenid != null">
+        #{mOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="mType != null">
+        #{mType,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="registtime != null">
+        #{registtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ordertime != null">
+        #{ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="equipCode != null">
+        #{equipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="payCode != null">
+        #{payCode,jdbcType=VARCHAR},
+      </if>
+      <if test="powerBi != null">
+        #{powerBi,jdbcType=VARCHAR},
+      </if>
+      <if test="bwShop != null">
+        #{bwShop,jdbcType=VARCHAR},
+      </if>
+      <if test="bkShop != null">
+        #{bkShop,jdbcType=VARCHAR},
+      </if>
+      <if test="bkTime != null">
+        #{bkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useMinute != null">
+        #{useMinute,jdbcType=INTEGER},
+      </if>
+      <if test="bill != null">
+        #{bill,jdbcType=DOUBLE},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="freeUsetime != null">
+        #{freeUsetime,jdbcType=INTEGER},
+      </if>
+      <if test="highCost != null">
+        #{highCost,jdbcType=DOUBLE},
+      </if>
+      <if test="platOid != null">
+        #{platOid,jdbcType=VARCHAR},
+      </if>
+      <if test="platName != null">
+        #{platName,jdbcType=VARCHAR},
+      </if>
+      <if test="platExtract != null">
+        #{platExtract,jdbcType=INTEGER},
+      </if>
+      <if test="provinceOid != null">
+        #{provinceOid,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null">
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceExtact != null">
+        #{provinceExtact,jdbcType=INTEGER},
+      </if>
+      <if test="cityOid != null">
+        #{cityOid,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityExtact != null">
+        #{cityExtact,jdbcType=INTEGER},
+      </if>
+      <if test="areaOid != null">
+        #{areaOid,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null">
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaExtact != null">
+        #{areaExtact,jdbcType=INTEGER},
+      </if>
+      <if test="salesOid != null">
+        #{salesOid,jdbcType=VARCHAR},
+      </if>
+      <if test="salesName != null">
+        #{salesName,jdbcType=VARCHAR},
+      </if>
+      <if test="salesExtact != null">
+        #{salesExtact,jdbcType=INTEGER},
+      </if>
+      <if test="shopOid != null">
+        #{shopOid,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null">
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopExtact != null">
+        #{shopExtact,jdbcType=INTEGER},
+      </if>
+      <if test="shopProfitMoney != null">
+        #{shopProfitMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="diTime != null">
+        #{diTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bwSid != null">
+        #{bwSid,jdbcType=BIGINT},
+      </if>
+      <if test="bwScode != null">
+        #{bwScode,jdbcType=VARCHAR},
+      </if>
+      <if test="bkSid != null">
+        #{bkSid,jdbcType=BIGINT},
+      </if>
+      <if test="bkScode != null">
+        #{bkScode,jdbcType=VARCHAR},
+      </if>
+      <if test="platMoney != null">
+        #{platMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="provinceMoney != null">
+        #{provinceMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="cityMoney != null">
+        #{cityMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="areaMoney != null">
+        #{areaMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="salesMoney != null">
+        #{salesMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="shopMoney != null">
+        #{shopMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null">
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="equipTypeId != null">
+        #{equipTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="equipTypeCode != null">
+        #{equipTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="equipTypeName != null">
+        #{equipTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="equipTypeCardnum != null">
+        #{equipTypeCardnum,jdbcType=INTEGER},
+      </if>
+      <if test="equipTypeVersion != null">
+        #{equipTypeVersion,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mId != null">
+        #{mId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.OrderLibraryExample" resultType="java.lang.Long">
+    select count(*) from order_library
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update order_library
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.code != null">
+        CODE = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mOpenid != null">
+        M_OPENID = #{record.mOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mType != null">
+        M_TYPE = #{record.mType,jdbcType=INTEGER},
+      </if>
+      <if test="record.sex != null">
+        SEX = #{record.sex,jdbcType=INTEGER},
+      </if>
+      <if test="record.registtime != null">
+        REGISTTIME = #{record.registtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ordertime != null">
+        ORDERTIME = #{record.ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.equipCode != null">
+        EQUIP_CODE = #{record.equipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderStatus != null">
+        ORDER_STATUS = #{record.orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.payStatus != null">
+        PAY_STATUS = #{record.payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.payType != null">
+        PAY_TYPE = #{record.payType,jdbcType=INTEGER},
+      </if>
+      <if test="record.payCode != null">
+        PAY_CODE = #{record.payCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.powerBi != null">
+        POWER_BI = #{record.powerBi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bwShop != null">
+        BW_SHOP = #{record.bwShop,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bkShop != null">
+        BK_SHOP = #{record.bkShop,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bkTime != null">
+        BK_TIME = #{record.bkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.useMinute != null">
+        USE_MINUTE = #{record.useMinute,jdbcType=INTEGER},
+      </if>
+      <if test="record.bill != null">
+        BILL = #{record.bill,jdbcType=DOUBLE},
+      </if>
+      <if test="record.unitPrice != null">
+        UNIT_PRICE = #{record.unitPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.freeUsetime != null">
+        FREE_USETIME = #{record.freeUsetime,jdbcType=INTEGER},
+      </if>
+      <if test="record.highCost != null">
+        HIGH_COST = #{record.highCost,jdbcType=DOUBLE},
+      </if>
+      <if test="record.platOid != null">
+        PLAT_OID = #{record.platOid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platName != null">
+        PLAT_NAME = #{record.platName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platExtract != null">
+        PLAT_EXTRACT = #{record.platExtract,jdbcType=INTEGER},
+      </if>
+      <if test="record.provinceOid != null">
+        PROVINCE_OID = #{record.provinceOid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provinceName != null">
+        PROVINCE_NAME = #{record.provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provinceExtact != null">
+        PROVINCE_EXTACT = #{record.provinceExtact,jdbcType=INTEGER},
+      </if>
+      <if test="record.cityOid != null">
+        CITY_OID = #{record.cityOid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cityName != null">
+        CITY_NAME = #{record.cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cityExtact != null">
+        CITY_EXTACT = #{record.cityExtact,jdbcType=INTEGER},
+      </if>
+      <if test="record.areaOid != null">
+        AREA_OID = #{record.areaOid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaName != null">
+        AREA_NAME = #{record.areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaExtact != null">
+        AREA_EXTACT = #{record.areaExtact,jdbcType=INTEGER},
+      </if>
+      <if test="record.salesOid != null">
+        SALES_OID = #{record.salesOid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salesName != null">
+        SALES_NAME = #{record.salesName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salesExtact != null">
+        SALES_EXTACT = #{record.salesExtact,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopOid != null">
+        SHOP_OID = #{record.shopOid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopName != null">
+        SHOP_NAME = #{record.shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopExtact != null">
+        SHOP_EXTACT = #{record.shopExtact,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopProfitMoney != null">
+        SHOP_PROFIT_MONEY = #{record.shopProfitMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.diTime != null">
+        DI_TIME = #{record.diTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bwSid != null">
+        BW_SID = #{record.bwSid,jdbcType=BIGINT},
+      </if>
+      <if test="record.bwScode != null">
+        BW_SCODE = #{record.bwScode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bkSid != null">
+        BK_SID = #{record.bkSid,jdbcType=BIGINT},
+      </if>
+      <if test="record.bkScode != null">
+        BK_SCODE = #{record.bkScode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platMoney != null">
+        PLAT_MONEY = #{record.platMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.provinceMoney != null">
+        PROVINCE_MONEY = #{record.provinceMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.cityMoney != null">
+        CITY_MONEY = #{record.cityMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.areaMoney != null">
+        AREA_MONEY = #{record.areaMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.salesMoney != null">
+        SALES_MONEY = #{record.salesMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.shopMoney != null">
+        SHOP_MONEY = #{record.shopMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.nickName != null">
+        NICK_NAME = #{record.nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.headImg != null">
+        HEAD_IMG = #{record.headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.equipTypeId != null">
+        EQUIP_TYPE_ID = #{record.equipTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.equipTypeCode != null">
+        EQUIP_TYPE_CODE = #{record.equipTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.equipTypeName != null">
+        EQUIP_TYPE_NAME = #{record.equipTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.equipTypeCardnum != null">
+        EQUIP_TYPE_CARDNUM = #{record.equipTypeCardnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.equipTypeVersion != null">
+        EQUIP_TYPE_VERSION = #{record.equipTypeVersion,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatetime != null">
+        UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mId != null">
+        M_ID = #{record.mId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update order_library
+    set ID = #{record.id,jdbcType=BIGINT},
+      CODE = #{record.code,jdbcType=VARCHAR},
+      M_OPENID = #{record.mOpenid,jdbcType=VARCHAR},
+      M_TYPE = #{record.mType,jdbcType=INTEGER},
+      SEX = #{record.sex,jdbcType=INTEGER},
+      REGISTTIME = #{record.registtime,jdbcType=TIMESTAMP},
+      ORDERTIME = #{record.ordertime,jdbcType=TIMESTAMP},
+      EQUIP_CODE = #{record.equipCode,jdbcType=VARCHAR},
+      ORDER_STATUS = #{record.orderStatus,jdbcType=INTEGER},
+      PAY_STATUS = #{record.payStatus,jdbcType=INTEGER},
+      PAY_TYPE = #{record.payType,jdbcType=INTEGER},
+      PAY_CODE = #{record.payCode,jdbcType=VARCHAR},
+      POWER_BI = #{record.powerBi,jdbcType=VARCHAR},
+      BW_SHOP = #{record.bwShop,jdbcType=VARCHAR},
+      BK_SHOP = #{record.bkShop,jdbcType=VARCHAR},
+      BK_TIME = #{record.bkTime,jdbcType=TIMESTAMP},
+      USE_MINUTE = #{record.useMinute,jdbcType=INTEGER},
+      BILL = #{record.bill,jdbcType=DOUBLE},
+      UNIT_PRICE = #{record.unitPrice,jdbcType=DOUBLE},
+      FREE_USETIME = #{record.freeUsetime,jdbcType=INTEGER},
+      HIGH_COST = #{record.highCost,jdbcType=DOUBLE},
+      PLAT_OID = #{record.platOid,jdbcType=VARCHAR},
+      PLAT_NAME = #{record.platName,jdbcType=VARCHAR},
+      PLAT_EXTRACT = #{record.platExtract,jdbcType=INTEGER},
+      PROVINCE_OID = #{record.provinceOid,jdbcType=VARCHAR},
+      PROVINCE_NAME = #{record.provinceName,jdbcType=VARCHAR},
+      PROVINCE_EXTACT = #{record.provinceExtact,jdbcType=INTEGER},
+      CITY_OID = #{record.cityOid,jdbcType=VARCHAR},
+      CITY_NAME = #{record.cityName,jdbcType=VARCHAR},
+      CITY_EXTACT = #{record.cityExtact,jdbcType=INTEGER},
+      AREA_OID = #{record.areaOid,jdbcType=VARCHAR},
+      AREA_NAME = #{record.areaName,jdbcType=VARCHAR},
+      AREA_EXTACT = #{record.areaExtact,jdbcType=INTEGER},
+      SALES_OID = #{record.salesOid,jdbcType=VARCHAR},
+      SALES_NAME = #{record.salesName,jdbcType=VARCHAR},
+      SALES_EXTACT = #{record.salesExtact,jdbcType=INTEGER},
+      SHOP_OID = #{record.shopOid,jdbcType=VARCHAR},
+      SHOP_NAME = #{record.shopName,jdbcType=VARCHAR},
+      SHOP_EXTACT = #{record.shopExtact,jdbcType=INTEGER},
+      SHOP_PROFIT_MONEY = #{record.shopProfitMoney,jdbcType=DOUBLE},
+      DI_TIME = #{record.diTime,jdbcType=TIMESTAMP},
+      BW_SID = #{record.bwSid,jdbcType=BIGINT},
+      BW_SCODE = #{record.bwScode,jdbcType=VARCHAR},
+      BK_SID = #{record.bkSid,jdbcType=BIGINT},
+      BK_SCODE = #{record.bkScode,jdbcType=VARCHAR},
+      PLAT_MONEY = #{record.platMoney,jdbcType=DOUBLE},
+      PROVINCE_MONEY = #{record.provinceMoney,jdbcType=DOUBLE},
+      CITY_MONEY = #{record.cityMoney,jdbcType=DOUBLE},
+      AREA_MONEY = #{record.areaMoney,jdbcType=DOUBLE},
+      SALES_MONEY = #{record.salesMoney,jdbcType=DOUBLE},
+      SHOP_MONEY = #{record.shopMoney,jdbcType=DOUBLE},
+      NICK_NAME = #{record.nickName,jdbcType=VARCHAR},
+      HEAD_IMG = #{record.headImg,jdbcType=VARCHAR},
+      EQUIP_TYPE_ID = #{record.equipTypeId,jdbcType=BIGINT},
+      EQUIP_TYPE_CODE = #{record.equipTypeCode,jdbcType=VARCHAR},
+      EQUIP_TYPE_NAME = #{record.equipTypeName,jdbcType=VARCHAR},
+      EQUIP_TYPE_CARDNUM = #{record.equipTypeCardnum,jdbcType=INTEGER},
+      EQUIP_TYPE_VERSION = #{record.equipTypeVersion,jdbcType=INTEGER},
+      UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      M_ID = #{record.mId,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ydb.auxiliary.service.ydbauxiliaryservice.dao.master.SysMemberwalletProMapper">
+  <resultMap id="BaseResultMap" type="ydb.auxiliary.service.ydbauxiliaryservice.model.SysMemberwalletPro">
+    <result column="ID" jdbcType="BIGINT" property="id" />
+    <result column="MEMBER" jdbcType="BIGINT" property="member" />
+    <result column="BEFORE_MON" jdbcType="DOUBLE" property="beforeMon" />
+    <result column="PROCESS_TIME" jdbcType="TIMESTAMP" property="processTime" />
+    <result column="OPERATOR_ID" jdbcType="BIGINT" property="operatorId" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="OPERATOR_IP" jdbcType="VARCHAR" property="operatorIp" />
+    <result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName" />
+    <result column="REAL_NAME" jdbcType="VARCHAR" property="realName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, MEMBER, BEFORE_MON, PROCESS_TIME, OPERATOR_ID, REMARK, OPERATOR_IP, ACCOUNT_NAME, 
+    REAL_NAME
+  </sql>
+  <select id="selectByExample" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysMemberwalletProExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_memberwallet_pro
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysMemberwalletProExample">
+    delete from sys_memberwallet_pro
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysMemberwalletPro">
+    insert into sys_memberwallet_pro (ID, MEMBER, BEFORE_MON, 
+      PROCESS_TIME, OPERATOR_ID, REMARK, 
+      OPERATOR_IP, ACCOUNT_NAME, REAL_NAME
+      )
+    values (#{id,jdbcType=BIGINT}, #{member,jdbcType=BIGINT}, #{beforeMon,jdbcType=DOUBLE}, 
+      #{processTime,jdbcType=TIMESTAMP}, #{operatorId,jdbcType=BIGINT}, #{remark,jdbcType=VARCHAR}, 
+      #{operatorIp,jdbcType=VARCHAR}, #{accountName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysMemberwalletPro">
+    insert into sys_memberwallet_pro
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="member != null">
+        MEMBER,
+      </if>
+      <if test="beforeMon != null">
+        BEFORE_MON,
+      </if>
+      <if test="processTime != null">
+        PROCESS_TIME,
+      </if>
+      <if test="operatorId != null">
+        OPERATOR_ID,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="operatorIp != null">
+        OPERATOR_IP,
+      </if>
+      <if test="accountName != null">
+        ACCOUNT_NAME,
+      </if>
+      <if test="realName != null">
+        REAL_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="member != null">
+        #{member,jdbcType=BIGINT},
+      </if>
+      <if test="beforeMon != null">
+        #{beforeMon,jdbcType=DOUBLE},
+      </if>
+      <if test="processTime != null">
+        #{processTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorIp != null">
+        #{operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="accountName != null">
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysMemberwalletProExample" resultType="java.lang.Long">
+    select count(*) from sys_memberwallet_pro
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sys_memberwallet_pro
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.member != null">
+        MEMBER = #{record.member,jdbcType=BIGINT},
+      </if>
+      <if test="record.beforeMon != null">
+        BEFORE_MON = #{record.beforeMon,jdbcType=DOUBLE},
+      </if>
+      <if test="record.processTime != null">
+        PROCESS_TIME = #{record.processTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.operatorId != null">
+        OPERATOR_ID = #{record.operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="record.remark != null">
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operatorIp != null">
+        OPERATOR_IP = #{record.operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountName != null">
+        ACCOUNT_NAME = #{record.accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realName != null">
+        REAL_NAME = #{record.realName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sys_memberwallet_pro
+    set ID = #{record.id,jdbcType=BIGINT},
+      MEMBER = #{record.member,jdbcType=BIGINT},
+      BEFORE_MON = #{record.beforeMon,jdbcType=DOUBLE},
+      PROCESS_TIME = #{record.processTime,jdbcType=TIMESTAMP},
+      OPERATOR_ID = #{record.operatorId,jdbcType=BIGINT},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      OPERATOR_IP = #{record.operatorIp,jdbcType=VARCHAR},
+      ACCOUNT_NAME = #{record.accountName,jdbcType=VARCHAR},
+      REAL_NAME = #{record.realName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

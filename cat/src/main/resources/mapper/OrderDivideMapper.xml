@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.speed.cat.dao.OrderDivideMapper">
+  <resultMap id="BaseResultMap" type="com.speed.cat.model.OrderDivide">
+    <result column="ID" jdbcType="BIGINT" property="id" />
+    <result column="BW_SHOP" jdbcType="BIGINT" property="bwShop" />
+    <result column="BK_SHOP" jdbcType="BIGINT" property="bkShop" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+    <result column="OR_MONEY" jdbcType="DOUBLE" property="orMoney" />
+    <result column="BK_TIME" jdbcType="TIMESTAMP" property="bkTime" />
+    <result column="BR_TIME" jdbcType="TIMESTAMP" property="brTime" />
+    <result column="DI_TIME" jdbcType="TIMESTAMP" property="diTime" />
+    <result column="PLAT_MONEY" jdbcType="DOUBLE" property="platMoney" />
+    <result column="PROVINCE_MONEY" jdbcType="DOUBLE" property="provinceMoney" />
+    <result column="CITY_MONEY" jdbcType="DOUBLE" property="cityMoney" />
+    <result column="AREA_MONEY" jdbcType="DOUBLE" property="areaMoney" />
+    <result column="SALES_MONEY" jdbcType="DOUBLE" property="salesMoney" />
+    <result column="SHOP_MONEY" jdbcType="DOUBLE" property="shopMoney" />
+    <result column="ISBLOCK" jdbcType="INTEGER" property="isblock" />
+  </resultMap>
+</mapper>

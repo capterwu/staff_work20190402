@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ydb.auxiliary.service.ydbauxiliaryservice.dao.master.SysMemberMapper">
+  <resultMap id="BaseResultMap" type="ydb.auxiliary.service.ydbauxiliaryservice.model.SysMember">
+    <result column="ID" jdbcType="BIGINT" property="id" />
+    <result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName" />
+    <result column="OPENID" jdbcType="VARCHAR" property="openid" />
+    <result column="REAL_NAME" jdbcType="VARCHAR" property="realName" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="STATUE" jdbcType="INTEGER" property="statue" />
+    <result column="ROLE" jdbcType="BIGINT" property="role" />
+    <result column="OPERATOR" jdbcType="BIGINT" property="operator" />
+    <result column="DEPARTMENT" jdbcType="BIGINT" property="department" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="REGISTTIME" jdbcType="TIMESTAMP" property="registtime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, ACCOUNT_NAME, OPENID, REAL_NAME, PHONE, EMAIL, STATUE, ROLE, OPERATOR, DEPARTMENT, 
+    PASSWORD, REGISTTIME
+  </sql>
+  <select id="selectByExample" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysMemberExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_member
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysMemberExample">
+    delete from sys_member
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysMember">
+    insert into sys_member (ID, ACCOUNT_NAME, OPENID, 
+      REAL_NAME, PHONE, EMAIL, 
+      STATUE, ROLE, OPERATOR, 
+      DEPARTMENT, PASSWORD, REGISTTIME
+      )
+    values (#{id,jdbcType=BIGINT}, #{accountName,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, 
+      #{realName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{statue,jdbcType=INTEGER}, #{role,jdbcType=BIGINT}, #{operator,jdbcType=BIGINT}, 
+      #{department,jdbcType=BIGINT}, #{password,jdbcType=VARCHAR}, #{registtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysMember">
+    insert into sys_member
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="accountName != null">
+        ACCOUNT_NAME,
+      </if>
+      <if test="openid != null">
+        OPENID,
+      </if>
+      <if test="realName != null">
+        REAL_NAME,
+      </if>
+      <if test="phone != null">
+        PHONE,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="statue != null">
+        STATUE,
+      </if>
+      <if test="role != null">
+        ROLE,
+      </if>
+      <if test="operator != null">
+        OPERATOR,
+      </if>
+      <if test="department != null">
+        DEPARTMENT,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="registtime != null">
+        REGISTTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="accountName != null">
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="statue != null">
+        #{statue,jdbcType=INTEGER},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=BIGINT},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=BIGINT},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=BIGINT},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="registtime != null">
+        #{registtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysMemberExample" resultType="java.lang.Long">
+    select count(*) from sys_member
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sys_member
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.accountName != null">
+        ACCOUNT_NAME = #{record.accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openid != null">
+        OPENID = #{record.openid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realName != null">
+        REAL_NAME = #{record.realName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        PHONE = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.statue != null">
+        STATUE = #{record.statue,jdbcType=INTEGER},
+      </if>
+      <if test="record.role != null">
+        ROLE = #{record.role,jdbcType=BIGINT},
+      </if>
+      <if test="record.operator != null">
+        OPERATOR = #{record.operator,jdbcType=BIGINT},
+      </if>
+      <if test="record.department != null">
+        DEPARTMENT = #{record.department,jdbcType=BIGINT},
+      </if>
+      <if test="record.password != null">
+        PASSWORD = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registtime != null">
+        REGISTTIME = #{record.registtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sys_member
+    set ID = #{record.id,jdbcType=BIGINT},
+      ACCOUNT_NAME = #{record.accountName,jdbcType=VARCHAR},
+      OPENID = #{record.openid,jdbcType=VARCHAR},
+      REAL_NAME = #{record.realName,jdbcType=VARCHAR},
+      PHONE = #{record.phone,jdbcType=VARCHAR},
+      EMAIL = #{record.email,jdbcType=VARCHAR},
+      STATUE = #{record.statue,jdbcType=INTEGER},
+      ROLE = #{record.role,jdbcType=BIGINT},
+      OPERATOR = #{record.operator,jdbcType=BIGINT},
+      DEPARTMENT = #{record.department,jdbcType=BIGINT},
+      PASSWORD = #{record.password,jdbcType=VARCHAR},
+      REGISTTIME = #{record.registtime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

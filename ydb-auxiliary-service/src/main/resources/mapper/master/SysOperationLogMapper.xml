@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ydb.auxiliary.service.ydbauxiliaryservice.dao.master.SysOperationLogMapper">
+  <resultMap id="BaseResultMap" type="ydb.auxiliary.service.ydbauxiliaryservice.model.SysOperationLog">
+    <result column="ID" jdbcType="BIGINT" property="id" />
+    <result column="IDENTITY" jdbcType="INTEGER" property="identity" />
+    <result column="ACTIONID" jdbcType="INTEGER" property="actionid" />
+    <result column="OPERATOR_ID" jdbcType="BIGINT" property="operatorId" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="OPERATOR_IP" jdbcType="VARCHAR" property="operatorIp" />
+    <result column="OPERATOR_TIME" jdbcType="TIMESTAMP" property="operatorTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, IDENTITY, ACTIONID, OPERATOR_ID, REMARK, OPERATOR_IP, OPERATOR_TIME
+  </sql>
+  <select id="selectByExample" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysOperationLogExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_operation_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysOperationLogExample">
+    delete from sys_operation_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysOperationLog">
+    insert into sys_operation_log (ID, IDENTITY, ACTIONID, 
+      OPERATOR_ID, REMARK, OPERATOR_IP, 
+      OPERATOR_TIME)
+    values (#{id,jdbcType=BIGINT}, #{identity,jdbcType=INTEGER}, #{actionid,jdbcType=INTEGER}, 
+      #{operatorId,jdbcType=BIGINT}, #{remark,jdbcType=VARCHAR}, #{operatorIp,jdbcType=VARCHAR}, 
+      #{operatorTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysOperationLog">
+    insert into sys_operation_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="identity != null">
+        IDENTITY,
+      </if>
+      <if test="actionid != null">
+        ACTIONID,
+      </if>
+      <if test="operatorId != null">
+        OPERATOR_ID,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="operatorIp != null">
+        OPERATOR_IP,
+      </if>
+      <if test="operatorTime != null">
+        OPERATOR_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=INTEGER},
+      </if>
+      <if test="actionid != null">
+        #{actionid,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorIp != null">
+        #{operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorTime != null">
+        #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="ydb.auxiliary.service.ydbauxiliaryservice.model.SysOperationLogExample" resultType="java.lang.Long">
+    select count(*) from sys_operation_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sys_operation_log
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.identity != null">
+        IDENTITY = #{record.identity,jdbcType=INTEGER},
+      </if>
+      <if test="record.actionid != null">
+        ACTIONID = #{record.actionid,jdbcType=INTEGER},
+      </if>
+      <if test="record.operatorId != null">
+        OPERATOR_ID = #{record.operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="record.remark != null">
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operatorIp != null">
+        OPERATOR_IP = #{record.operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operatorTime != null">
+        OPERATOR_TIME = #{record.operatorTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sys_operation_log
+    set ID = #{record.id,jdbcType=BIGINT},
+      IDENTITY = #{record.identity,jdbcType=INTEGER},
+      ACTIONID = #{record.actionid,jdbcType=INTEGER},
+      OPERATOR_ID = #{record.operatorId,jdbcType=BIGINT},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      OPERATOR_IP = #{record.operatorIp,jdbcType=VARCHAR},
+      OPERATOR_TIME = #{record.operatorTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+
+</mapper>

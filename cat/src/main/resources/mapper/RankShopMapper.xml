@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.speed.cat.dao.RankShopMapper">
+    <resultMap id="BaseResultMap" type="com.speed.cat.model.RankShop">
+        <result column="ID" jdbcType="BIGINT" property="id"/>
+        <result column="AREA" jdbcType="BIGINT" property="area"/>
+        <result column="MANAGER" jdbcType="BIGINT" property="manager"/>
+        <result column="PLAT" jdbcType="BIGINT" property="plat"/>
+        <result column="PROVINCE_AGENT" jdbcType="BIGINT" property="provinceAgent"/>
+        <result column="CITY_AGENT" jdbcType="BIGINT" property="cityAgent"/>
+        <result column="AREA_AGENT" jdbcType="BIGINT" property="areaAgent"/>
+        <result column="SALES_AGENT" jdbcType="BIGINT" property="salesAgent"/>
+        <result column="CODE" jdbcType="VARCHAR" property="code"/>
+        <result column="S_NAME" jdbcType="VARCHAR" property="sName"/>
+        <result column="S_PHONE" jdbcType="VARCHAR" property="sPhone"/>
+        <result column="S_ADDRESS" jdbcType="VARCHAR" property="sAddress"/>
+        <result column="S_LOGO" jdbcType="VARCHAR" property="sLogo"/>
+        <result column="S_COORDINATE" jdbcType="VARCHAR" property="sCoordinate"/>
+        <result column="SHOP_REQUIRE" jdbcType="VARCHAR" property="shopRequire"/>
+        <result column="SHOP_PROFIT" jdbcType="VARCHAR" property="shopProfit"/>
+        <result column="SETTLE_ASK" jdbcType="VARCHAR" property="settleAsk"/>
+        <result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+        <result column="FREE_USETIME" jdbcType="INTEGER" property="freeUsetime"/>
+        <result column="RENT_COST" jdbcType="DOUBLE" property="rentCost"/>
+        <result column="HIGH_COST" jdbcType="DOUBLE" property="highCost"/>
+        <result column="PLAT_EXTRACT" jdbcType="INTEGER" property="platExtract"/>
+        <result column="PROVINCE_EXTACT" jdbcType="INTEGER" property="provinceExtact"/>
+        <result column="CITY_EXTACT" jdbcType="INTEGER" property="cityExtact"/>
+        <result column="AREA_EXTACT" jdbcType="INTEGER" property="areaExtact"/>
+        <result column="SALES_EXTACT" jdbcType="INTEGER" property="salesExtact"/>
+        <result column="SHOP_EXTACT" jdbcType="INTEGER" property="shopExtact"/>
+        <result column="SHOP_PROFIT_MONEY" jdbcType="DOUBLE" property="shopProfitMoney"/>
+        <result column="ISBLOCK" jdbcType="INTEGER" property="isblock"/>
+        <result column="ISQUICK" jdbcType="INTEGER" property="isquick"/>
+        <result column="ISONECODE" jdbcType="VARCHAR" property="isonecode"/>
+        <result column="REGISTTIME" jdbcType="TIMESTAMP" property="registtime"/>
+        <result column="OPERATOR" jdbcType="BIGINT" property="operator"/>
+        <result column="LO" jdbcType="DOUBLE" property="lo"/>
+        <result column="LA" jdbcType="DOUBLE" property="la"/>
+    </resultMap>
+
+
+</mapper>
